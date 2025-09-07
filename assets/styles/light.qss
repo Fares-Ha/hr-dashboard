@@ -1,0 +1,24 @@
+/* Light Theme */
+QWidget {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+QFrame#sidebar {
+    background-color: #f0f0f0;
+}
+
+QPushButton {
+    background-color: #e0e0e0;
+    border: 1px solid #c0c0c0;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #d0d0d0;
+}
+
+QLineEdit, QDoubleSpinBox, QDateEdit, QComboBox {
+    border: 1px solid #c0c0c0;
+    padding: 2px;
+}

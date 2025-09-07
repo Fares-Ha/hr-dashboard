@@ -1,29 +1,23 @@
-# HR Management Dashboard
+# HR Management Dashboard (PyQt6)
 
-A modern, cross-platform desktop application for managing employee information, built with Electron, React, and TypeScript.
+This is a cross-platform desktop application for managing employee information, built with Python and the PyQt6 framework.
 
 ## Core Features
 
-- **Employee Management (CRUD):** Add, view, edit, and delete employee records.
-- **Modern UI:** A clean, modern interface built with Material-UI (MUI).
-- **Search, Filter, and Sort:** Powerful data grid with global search and advanced column filtering.
-- **Dashboard & Analytics:** Visualize HR data with interactive charts for salary distribution and hiring trends.
-- **Customization:** Supports light/dark themes and a customizable application logo.
-- **Persistent Storage:** Uses a local SQLite database to store all application data.
-- **Cross-Platform:** Designed to run on Windows, macOS, and Linux.
+-   **Employee Management (CRUD):** Add, view, edit, and delete employee records.
+-   **Rich Data Table:** The employee table supports sorting by any column, real-time filtering via a search bar, and displays image thumbnails for ID documents.
+-   **Dashboard & Analytics:** A dashboard displays key KPIs like total employees and average salary, along with a chart for salary distribution.
+-   **Customization:** The settings page allows users to switch between light and dark themes and set a custom application logo. All settings are persistent.
+-   **Data Storage:** Uses a local SQLite database with the SQLAlchemy ORM.
 
 ## Tech Stack
 
-- **Framework:** [Electron](https://www.electronjs.org/)
-- **UI:** [React](https://reactjs.org/) with [TypeScript](https://www.typescriptlang.org/)
-- **UI Components:** [Material-UI (MUI)](https://mui.com/)
-- **Charting:** [Recharts](https://recharts.org/)
-- **Database:** [SQLite](https://www.sqlite.org/)
-- **Build Tool:** [Electron Forge](https://www.electronforge.io/) with Vite
+-   **Framework:** PyQt6
+-   **Database:** SQLite
+-   **ORM:** SQLAlchemy
+-   **Charting:** PyQtGraph
 
-## Development
-
-To run the application in a development environment:
+## Development Setup
 
 1.  **Clone the repository:**
     ```bash
@@ -31,23 +25,37 @@ To run the application in a development environment:
     cd <repository-directory>
     ```
 
-2.  **Install dependencies:**
+2.  **Create a virtual environment (recommended):**
     ```bash
-    npm install
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
     ```
 
-3.  **Start the development server:**
-    This will launch the application with hot-reloading enabled.
+3.  **Install dependencies:**
     ```bash
-    npm start
+    pip install -r requirements.txt
     ```
 
-## Building for Production
+4.  **Run the application:**
+    ```bash
+    python src/main.py
+    ```
 
-To create a distributable executable for your platform:
+## Packaging for Production
 
-```bash
-npm run make
-```
+To create a standalone executable for your platform, you can use PyInstaller.
 
-This command will generate the packaged application in the `out` directory.
+1.  **Install PyInstaller:**
+    ```bash
+    pip install pyinstaller
+    ```
+
+2.  **Run the PyInstaller command:**
+    From the root of the project directory, run the following command. This command bundles the application into a single executable, includes the necessary assets, and ensures it runs as a windowed (non-console) application.
+
+    ```bash
+    pyinstaller --name "HR-Dashboard" --onefile --windowed --add-data "assets:assets" src/main.py
+    ```
+
+3.  **Find the executable:**
+    The final executable will be located in the `dist` directory that PyInstaller creates.
