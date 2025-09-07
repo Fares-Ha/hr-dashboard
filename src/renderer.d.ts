@@ -1,19 +1,6 @@
 // This file declares the APIs that are exposed from the preload script
 // to the renderer process.
-
-export interface IEmployee {
-  id?: number;
-  firstName: string;
-  lastName: string;
-  dob: string;
-  emiratesId?: string;
-  passportNumber?: string;
-  salary?: number;
-  emiratesIdFrontPath?: string;
-  emiratesIdBackPath?: string;
-  passportImgPath?: string;
-  createdAt?: string;
-}
+import { IEmployee } from './types/employee';
 
 export interface ISettings {
   theme: 'light' | 'dark';

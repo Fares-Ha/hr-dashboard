@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Box, Typography, TextField, Button, Stack } from '@mui/material';
-import { IEmployee } from '../renderer';
+import { IEmployee } from '../types/employee';
 
 interface AddEmployeeModalProps {
   open: boolean;

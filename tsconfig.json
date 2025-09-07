@@ -13,5 +13,8 @@
     "resolveJsonModule": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "files": [
+    "src/renderer.d.ts"
+  ],
+  "include": ["src", "src/pages/EmployeesPage.test.tsx"]
 }

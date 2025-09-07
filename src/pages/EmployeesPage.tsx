@@ -6,8 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { AddEmployeeModal } from '../components/AddEmployeeModal';
 import { EditEmployeeModal } from '../components/EditEmployeeModal';
 import { ConfirmationDialog } from '../components/ConfirmationDialog';
-import { IEmployee } from '../renderer';
-
+import { IEmployee } from '../types/employee';
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 90 },
   { field: 'firstName', headerName: 'First Name', width: 150, editable: true },
@@ -54,7 +53,7 @@ export const EmployeesPage: React.FC = () => {
           <IconButton onClick={() => handleEditClick(params.row as IEmployee)}>
             <EditIcon />
           </IconButton>
-          <IconButton onClick={() => handleDeleteClick(params.row.id)}>
+          <IconButton onClick={() => handleDeleteClick(params.row.id)} aria-label="delete">
             <DeleteIcon />
           </IconButton>
         </>
@@ -82,7 +81,7 @@ export const EmployeesPage: React.FC = () => {
   const handleAddEmployee = async (employee: IEmployee) => {
     try {
       await window.db.addEmployee(employee);
-      setIsModalOpen(false);
+      setIsAddModalOpen(false);
       fetchEmployees(); // Refresh the list
     } catch (error) {
       console.error('Failed to add employee:', error);
@@ -119,7 +118,7 @@ export const EmployeesPage: React.FC = () => {
         console.error('Failed to delete employee:', error);
       } finally {
         setIsConfirmOpen(false);
-        setSelectedEmployeeId(null);
+        setSelectedEmployee(null);
       }
     }
   };
