@@ -35,7 +35,7 @@
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.32.0",
     "typescript": "~4.5.4",
-    "vite": "^5.4.19"
+    "vite": "^4.5.14"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
