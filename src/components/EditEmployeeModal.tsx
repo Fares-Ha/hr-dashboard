@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Box, Typography, TextField, Button, Stack } from '@mui/material';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { IEmployee } from '../renderer';
 
 interface EditEmployeeModalProps {
@@ -68,16 +71,21 @@ export const EditEmployeeModal: React.FC<EditEmployeeModalProps> = ({ open, onCl
               value={formData.lastName}
               onChange={handleChange}
             />
-            <TextField
-              required
-              fullWidth
-              label="Date of Birth"
-              name="dob"
-              type="date"
-              InputLabelProps={{ shrink: true }}
-              value={formData.dob}
-              onChange={handleChange}
-            />
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                label="Date of Birth"
+                value={new Date(formData.dob)}
+                onChange={(newValue) => {
+                  if (newValue && formData) {
+                    setFormData({
+                      ...formData,
+                      dob: newValue.toISOString().split('T')[0]
+                    });
+                  }
+                }}
+                sx={{ width: '100%' }}
+              />
+            </LocalizationProvider>
             <TextField
               fullWidth
               label="Salary"

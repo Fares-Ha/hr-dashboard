@@ -26,5 +26,8 @@ const App: React.FC = () => {
   );
 };
 
-const root = createRoot(document.body);
-root.render(<App />);
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  const root = createRoot(rootElement);
+  root.render(<App />);
+}
